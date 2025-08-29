@@ -19,58 +19,58 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 items-center">
-        <div className="mr-4 hidden md:flex">
-          <Logo />
-        </div>
-        
-        <div className="md:hidden">
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <Menu className="h-6 w-6" />
-                <span className="sr-only">Toggle Menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="left">
-              <div className="flex flex-col gap-6 p-6">
-                <Logo />
-                <nav className="flex flex-col gap-4">
-                  {navLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={() => setIsOpen(false)}
-                      className="text-lg font-medium text-foreground hover:text-primary"
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </nav>
-              </div>
-            </SheetContent>
-          </Sheet>
-        </div>
-        
-        <div className="flex flex-1 items-center justify-center md:justify-end">
-          <div className="md:hidden">
+      <div className="container flex h-14 items-center justify-between">
+        <div className="flex items-center">
+          <div className="md:hidden mr-4">
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Menu className="h-6 w-6" />
+                  <span className="sr-only">Toggle Menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="left">
+                <div className="flex flex-col gap-6 p-6">
+                  <Logo />
+                  <nav className="flex flex-col gap-4">
+                    {navLinks.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        onClick={() => setIsOpen(false)}
+                        className="text-lg font-medium text-foreground hover:text-primary"
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </nav>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
+          <div className="hidden md:flex">
             <Logo />
           </div>
-          <nav className="hidden items-center gap-4 md:flex">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="font-medium text-foreground/60 transition-colors hover:text-foreground/80"
-              >
-                {link.label}
-              </Link>
-            ))}
-            <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-              <Link href="#quote">Get a Quote</Link>
-            </Button>
-          </nav>
         </div>
+        
+        <div className="flex items-center md:hidden">
+          <Logo />
+        </div>
+
+        <nav className="hidden items-center gap-4 md:flex">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="font-medium text-foreground/60 transition-colors hover:text-foreground/80"
+            >
+              {link.label}
+            </Link>
+          ))}
+          <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+            <Link href="#quote">Get a Quote</Link>
+          </Button>
+        </nav>
       </div>
     </header>
   );
