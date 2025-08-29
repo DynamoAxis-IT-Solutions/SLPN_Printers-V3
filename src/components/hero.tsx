@@ -14,19 +14,24 @@ import Autoplay from "embla-carousel-autoplay";
 
 const carouselItems = [
   {
-    image: "https://picsum.photos/1920/1080?random=1",
+    image: "/slider/img 1 .webp",
     alt: "Assortment of printed materials",
-    hint: "print materials brochure",
   },
   {
-    image: "https://picsum.photos/1920/1080?random=2",
+    image: "/slider/img 2 .webp",
     alt: "Close-up of a high-quality print",
-    hint: "quality printing",
   },
   {
-    image: "https://picsum.photos/1920/1080?random=3",
+    image: "/slider/img 20 .webp",
     alt: "Printing press in action",
-    hint: "printing press",
+  },
+  {
+    image: "/slider/img 21 .webp",
+    alt: "Colorful print design",
+  },
+  {
+    image: "/slider/img 22 .webp",
+    alt: "Finished print products",
   },
 ];
 
@@ -54,7 +59,6 @@ export function Hero() {
                   alt={item.alt}
                   fill
                   className="object-cover"
-                  data-ai-hint={item.hint}
                 />
                 <div className="absolute inset-0 bg-black/60" />
               </div>
