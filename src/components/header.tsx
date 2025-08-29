@@ -40,10 +40,10 @@ export function Header() {
       </div>
 
       {/* Main Navigation */}
-      <div className="container mx-auto flex items-center justify-between px-4 py-2">
-        <div className="flex items-center">
-          <Logo />
-        </div>
+      <div className="container mx-auto flex items-center justify-between px-4 py-1 h-20">
+      <div className="flex items-center h-10">
+    <Logo className="h-8 w-40" />
+  </div>
 
         <nav className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
