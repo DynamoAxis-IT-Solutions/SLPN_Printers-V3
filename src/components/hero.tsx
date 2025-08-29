@@ -14,23 +14,23 @@ import Autoplay from "embla-carousel-autoplay";
 
 const carouselItems = [
   {
-    image: "/slider/img 1 .webp",
+    image: "/slider/img-1.webp",
     alt: "Assortment of printed materials",
   },
   {
-    image: "/slider/img 2 .webp",
+    image: "/slider/img-2.webp",
     alt: "Close-up of a high-quality print",
   },
   {
-    image: "/slider/img 20 .webp",
+    image: "/slider/img-20.webp",
     alt: "Printing press in action",
   },
   {
-    image: "/slider/img 21 .webp",
+    image: "/slider/img-21.webp",
     alt: "Colorful print design",
   },
   {
-    image: "/slider/img 22 .webp",
+    image: "/slider/img-22.webp",
     alt: "Finished print products",
   },
 ];
