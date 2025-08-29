@@ -52,18 +52,18 @@ export function Hero() {
       >
         <CarouselContent className="h-full">
           {carouselItems.map((item, index) => (
-            <CarouselItem key={index} className="h-full">
-              <div className="relative h-full w-full">
-                <Image
-                  src={item.image}
-                  alt={item.alt}
-                  fill
-                  className="object-cover"
-                  priority={index === 0}
-                />
-                <div className="absolute inset-0 bg-black/60" />
-              </div>
-            </CarouselItem>
+           <CarouselItem key={index} className="h-full">
+           <div className="relative w-full h-full min-h-[500px]">
+             <Image
+               src={item.image}
+               alt={item.alt}
+               fill
+               className="object-cover"
+               priority={index === 0}
+             />
+             <div className="absolute inset-0 bg-black/60" />
+           </div>
+         </CarouselItem>         
           ))}
         </CarouselContent>
         <div className="absolute inset-0 flex items-center justify-center">
