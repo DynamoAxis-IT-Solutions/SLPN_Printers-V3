@@ -1,11 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu, Mail, Phone } from 'lucide-react';
 import { Logo } from './logo';
+import { cn } from '@/lib/utils';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -17,11 +18,31 @@ const navLinks = [
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 50;
+      if (isScrolled !== scrolled) {
+        setScrolled(isScrolled);
+      }
+    };
+
+    document.addEventListener('scroll', handleScroll);
+    return () => {
+      document.removeEventListener('scroll', handleScroll);
+    };
+  }, [scrolled]);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-[#1C1C1C] text-white shadow-md">
+    <header
+      className={cn(
+        'sticky top-0 z-50 w-full text-white transition-all duration-300',
+        scrolled ? 'bg-[#1C1C1C] shadow-md' : 'bg-transparent'
+      )}
+    >
       {/* Top Bar */}
-      <div className="bg-[#333333]">
+      <div className={cn('transition-all duration-300', scrolled ? 'bg-[#333333]' : 'bg-black/20')}>
         <div className="container mx-auto flex h-10 items-center justify-between px-4">
           <div className="flex items-center gap-6 text-sm">
             <a href="tel:011-2194819" className="flex items-center gap-2 hover:text-primary">
