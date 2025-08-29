@@ -40,7 +40,7 @@ export function Header() {
       </div>
 
       {/* Main Navigation */}
-      <div className="container mx-auto flex h-20 items-center justify-between px-4">
+      <div className="container mx-auto flex items-center justify-between px-4 py-3">
         <div className="flex items-center">
           <Logo />
         </div>
