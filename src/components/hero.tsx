@@ -59,6 +59,7 @@ export function Hero() {
                   alt={item.alt}
                   fill
                   className="object-cover"
+                  priority={index === 0}
                 />
                 <div className="absolute inset-0 bg-black/60" />
               </div>
