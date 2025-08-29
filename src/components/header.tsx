@@ -42,7 +42,7 @@ export function Header() {
       {/* Main Navigation */}
       <div className="container mx-auto flex items-center justify-between px-4 py-1 h-20">
         <div className="flex items-center">
-            <Logo className="h-12 w-auto" />
+            <Logo className="h-12 w-40" />
         </div>
 
         <nav className="hidden items-center gap-8 md:flex">
