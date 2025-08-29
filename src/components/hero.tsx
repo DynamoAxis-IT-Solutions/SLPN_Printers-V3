@@ -61,7 +61,7 @@ export function Hero() {
                className="object-cover"
                priority={index === 0}
              />
-             <div className="absolute inset-0 bg-black/60" />
+             <div className="absolute inset-0 bg-black/70" />
            </div>
          </CarouselItem>         
           ))}
@@ -84,12 +84,6 @@ export function Hero() {
                         </Button>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-            <div className="flex items-center gap-4">
-                <CarouselPrevious className="relative -left-4 static translate-y-0 bg-white/20 hover:bg-white/30 text-white border-0" />
-                <CarouselNext className="relative -right-4 static translate-y-0 bg-white/20 hover:bg-white/30 text-white border-0" />
             </div>
         </div>
       </Carousel>
