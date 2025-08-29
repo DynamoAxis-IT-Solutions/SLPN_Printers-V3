@@ -13,10 +13,10 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="w-full py-12 md:py-24 lg:py-32">
+    <section id="contact" className="w-full py-12 md:py-24 lg:py-32 bg-[#0C1222]">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4">
-          <Card className="w-full max-w-3xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.8s', animationFillMode: 'both' }}>
+          <Card className="w-full max-w-3xl mx-auto animate-fade-in-up bg-transparent border-border" style={{ animationDelay: '0.8s', animationFillMode: 'both' }}>
             <CardHeader className="text-center">
               <CardTitle className="text-3xl font-bold tracking-tighter sm:text-4xl">Contact Us</CardTitle>
               <CardDescription className="mt-2 text-muted-foreground md:text-lg">

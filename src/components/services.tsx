@@ -1,3 +1,4 @@
+'use client';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Paintbrush, FileText, Megaphone, Box, Layers, BookOpen } from "lucide-react";
 
@@ -36,7 +37,7 @@ const services = [
 
 export function Services() {
   return (
-    <section id="services" className="w-full py-12 md:py-24 lg:py-32 bg-card">
+    <section id="services" className="w-full py-12 md:py-24 lg:py-32 bg-[#0C1222]">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12 animate-fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
           <div className="space-y-2">
@@ -48,7 +49,7 @@ export function Services() {
         </div>
         <div className="grid justify-center gap-8 sm:grid-cols-2 lg:grid-cols-3 animate-fade-in-up" style={{ animationDelay: '0.3s', animationFillMode: 'both' }}>
           {services.map((service, index) => (
-            <Card key={index} className="flex flex-col items-center text-center p-6 transition-transform transform-gpu hover:-translate-y-2 hover:shadow-xl">
+            <Card key={index} className="flex flex-col items-center text-center p-6 transition-transform transform-gpu hover:-translate-y-2 hover:shadow-xl bg-transparent border-border">
               <CardHeader className="p-0">
                 {service.icon}
                 <CardTitle className="mt-4">{service.title}</CardTitle>
