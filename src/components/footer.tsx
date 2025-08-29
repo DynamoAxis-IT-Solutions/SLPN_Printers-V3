@@ -1,7 +1,6 @@
 import { Twitter, Facebook, Instagram } from "lucide-react";
 import { Logo } from "./logo";
 import Link from "next/link";
-
 export function Footer() {
   const currentYear = new Date().getFullYear();
   return (
@@ -16,7 +15,6 @@ export function Footer() {
               Your one-stop shop for all printing needs.
             </p>
           </div>
-
           {/* Middle: Quick Links */}
           <div className="grid gap-4">
             <h4 className="font-semibold">Quick Links</h4>
@@ -35,7 +33,6 @@ export function Footer() {
               </Link>
             </nav>
           </div>
-
           {/* Right: Social Links */}
           <div className="grid gap-4">
             <h4 className="font-semibold">Connect With Us</h4>
