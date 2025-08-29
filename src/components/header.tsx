@@ -42,7 +42,7 @@ export function Header() {
       )}
     >
       {/* Top Bar */}
-      <div className={cn('transition-all duration-300', scrolled ? 'bg-[#333333]' : 'bg-black/20')}>
+      <div className={cn('transition-all duration-300', scrolled ? 'bg-[#333333]' : 'bg-transparent')}>
         <div className="container mx-auto flex h-10 items-center justify-between px-4">
           <div className="flex items-center gap-6 text-sm">
             <a href="tel:011-2194819" className="flex items-center gap-2 hover:text-primary">
@@ -61,7 +61,7 @@ export function Header() {
       </div>
 
       {/* Main Navigation */}
-      <div className="container mx-auto flex items-center justify-between px-4 py-1 h-20">
+      <div className="container mx-auto flex items-center justify-between px-4 py-1 h-16">
         <div className="flex items-center">
             <Logo className="h-12 w-40" />
         </div>
