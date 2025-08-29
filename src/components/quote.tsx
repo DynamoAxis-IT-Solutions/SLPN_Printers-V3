@@ -14,7 +14,7 @@ export function Quote() {
   };
 
   return (
-    <section id="quote" className="w-full py-12 md:py-24 lg:py-32 bg-[#0C1222]">
+    <section id="quote" className="w-full py-12 md:py-24 lg:py-32">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4">
           <Card className="w-full max-w-3xl mx-auto animate-fade-in-up bg-transparent border-border" style={{ animationDelay: '0.6s', animationFillMode: 'both' }}>

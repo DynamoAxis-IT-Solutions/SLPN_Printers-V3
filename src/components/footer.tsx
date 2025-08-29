@@ -5,31 +5,55 @@ import Link from "next/link";
 export function Footer() {
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="bg-card border-t">
-      <div className="container py-12 px-4 md:px-6">
+    <footer className="w-full bg-card border-t">
+      {/* Full-width container with max-width inside */}
+      <div className="mx-auto w-full max-w-7xl px-6 py-12">
         <div className="grid gap-8 md:grid-cols-3">
+          {/* Left: Logo + tagline */}
           <div className="space-y-4">
             <Logo />
-            <p className="text-muted-foreground">Your one-stop shop for all printing needs.</p>
+            <p className="text-muted-foreground">
+              Your one-stop shop for all printing needs.
+            </p>
           </div>
+
+          {/* Middle: Quick Links */}
           <div className="grid gap-4">
             <h4 className="font-semibold">Quick Links</h4>
             <nav className="flex flex-col gap-2">
-              <Link href="#services" className="text-muted-foreground hover:text-foreground">Services</Link>
-              <Link href="#portfolio" className="text-muted-foreground hover:text-foreground">Portfolio</Link>
-              <Link href="#quote" className="text-muted-foreground hover:text-foreground">Get a Quote</Link>
-              <Link href="#contact" className="text-muted-foreground hover:text-foreground">Contact</Link>
+              <Link href="#services" className="text-muted-foreground hover:text-foreground">
+                Services
+              </Link>
+              <Link href="#portfolio" className="text-muted-foreground hover:text-foreground">
+                Portfolio
+              </Link>
+              <Link href="#quote" className="text-muted-foreground hover:text-foreground">
+                Get a Quote
+              </Link>
+              <Link href="#contact" className="text-muted-foreground hover:text-foreground">
+                Contact
+              </Link>
             </nav>
           </div>
+
+          {/* Right: Social Links */}
           <div className="grid gap-4">
             <h4 className="font-semibold">Connect With Us</h4>
             <div className="flex gap-4">
-              <Link href="#" className="text-muted-foreground hover:text-foreground"><Twitter /></Link>
-              <Link href="#" className="text-muted-foreground hover:text-foreground"><Facebook /></Link>
-              <Link href="#" className="text-muted-foreground hover:text-foreground"><Instagram /></Link>
+              <Link href="#" className="text-muted-foreground hover:text-foreground">
+                <Twitter />
+              </Link>
+              <Link href="#" className="text-muted-foreground hover:text-foreground">
+                <Facebook />
+              </Link>
+              <Link href="#" className="text-muted-foreground hover:text-foreground">
+                <Instagram />
+              </Link>
             </div>
           </div>
         </div>
+
+        {/* Bottom Bar */}
         <div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
           <p>&copy; {currentYear} SLPN Printers. All rights reserved.</p>
         </div>

@@ -22,7 +22,7 @@ export default function Home() {
         </section>
 
         {/* Portfolio */}
-        <section className="w-full bg-[#000000] py-20">
+        <section className="w-full bg-[#0C1222] py-20">
           <div className="max-w-7xl mx-auto px-4 text-center">
             <Portfolio />
           </div>
@@ -36,7 +36,7 @@ export default function Home() {
         </section>
 
         {/* Contact */}
-        <section className="w-full bg-[#000000] py-20">
+        <section className="w-full bg-[#0C1222] py-20">
           <div className="max-w-7xl mx-auto px-4 text-center">
             <Contact />
           </div>

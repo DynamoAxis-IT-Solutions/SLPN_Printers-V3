@@ -37,7 +37,7 @@ const services = [
 
 export function Services() {
   return (
-    <section id="services" className="w-full py-12 md:py-24 lg:py-32 bg-[#0C1222]">
+    <section id="services" className="w-full py-12 md:py-24 lg:py-32 bg-[]">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12 animate-fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
           <div className="space-y-2">
