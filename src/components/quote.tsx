@@ -17,9 +17,9 @@ export function Quote() {
     <section id="quote" className="w-full py-12 md:py-24 lg:py-32">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4">
-          <Card className="w-full max-w-3xl mx-auto animate-fade-in-up bg-transparent border-border" style={{ animationDelay: '0.6s', animationFillMode: 'both' }}>
+          <Card className="w-full max-w-3xl mx-auto animate-fade-in-up bg-transparent border-none shadow-none" style={{ animationDelay: '0.6s', animationFillMode: 'both' }}>
             <CardHeader className="text-center">
-              <CardTitle className="text-3xl font-bold tracking-tighter sm:text-4xl">Request a Quote</CardTitle>
+              <CardTitle className="text-3xl font-bold tracking-tighter sm:text-4xl text-foreground">Request a Quote</CardTitle>
               <CardDescription className="mt-2 text-muted-foreground md:text-lg">
                 Fill out the form below and we'll get back to you with a personalized quote.
               </CardDescription>

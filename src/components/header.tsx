@@ -37,14 +37,14 @@ export function Header() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-50 w-full text-white transition-all duration-300',
-        scrolled ? 'bg-[#1C1C1C] shadow-md' : 'bg-transparent'
+        'sticky top-0 z-50 w-full transition-all duration-300',
+        scrolled ? 'bg-white shadow-md text-gray-800' : 'bg-transparent text-white'
       )}
     >
       {/* Top Bar */}
-      <div className={cn('transition-all duration-300', scrolled ? 'bg-[#333333]' : 'bg-transparent')}>
+      <div className={cn('transition-all duration-300', scrolled ? 'bg-gray-100' : 'bg-black/20')}>
         <div className="container mx-auto flex h-10 items-center justify-between px-4">
-          <div className="flex items-center gap-6 text-sm">
+          <div className={cn('flex items-center gap-6 text-sm', scrolled ? 'text-gray-600' : 'text-white')}>
             <a href="tel:011-2194819" className="flex items-center gap-2 hover:text-primary">
               <Phone size={16} />
               <span>011-2194819</span>
@@ -71,7 +71,7 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="font-medium text-white/80 transition-colors hover:text-white"
+              className={cn("font-medium transition-colors", scrolled ? 'text-gray-600 hover:text-gray-900' : 'text-white/80 hover:text-white')}
             >
               {link.label}
             </Link>
@@ -81,12 +81,12 @@ export function Header() {
         <div className="md:hidden">
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" className={cn(scrolled ? 'text-gray-800' : 'text-white')}>
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Toggle Menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="bg-[#1C1C1C] text-white border-r border-gray-700">
+            <SheetContent side="left" className="bg-white text-gray-800 border-r border-gray-200">
               <div className="flex flex-col gap-8 p-6">
                 <Logo />
                 <nav className="flex flex-col gap-6">
@@ -95,7 +95,7 @@ export function Header() {
                       key={link.href}
                       href={link.href}
                       onClick={() => setIsOpen(false)}
-                      className="text-lg font-medium hover:text-primary"
+                      className="text-lg font-medium text-gray-600 hover:text-primary"
                     >
                       {link.label}
                     </Link>

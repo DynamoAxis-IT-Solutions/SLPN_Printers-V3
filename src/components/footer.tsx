@@ -4,7 +4,7 @@ import Link from "next/link";
 export function Footer() {
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="w-full bg-card border-t">
+    <footer className="w-full bg-gray-100 border-t">
       {/* Full-width container with max-width inside */}
       <div className="mx-auto w-full max-w-7xl px-6 py-12">
         <div className="grid gap-8 md:grid-cols-3">
@@ -17,33 +17,33 @@ export function Footer() {
           </div>
           {/* Middle: Quick Links */}
           <div className="grid gap-4">
-            <h4 className="font-semibold">Quick Links</h4>
+            <h4 className="font-semibold text-foreground">Quick Links</h4>
             <nav className="flex flex-col gap-2">
-              <Link href="#services" className="text-muted-foreground hover:text-foreground">
+              <Link href="#services" className="text-muted-foreground hover:text-primary">
                 Services
               </Link>
-              <Link href="#portfolio" className="text-muted-foreground hover:text-foreground">
+              <Link href="#portfolio" className="text-muted-foreground hover:text-primary">
                 Portfolio
               </Link>
-              <Link href="#quote" className="text-muted-foreground hover:text-foreground">
+              <Link href="#quote" className="text-muted-foreground hover:text-primary">
                 Get a Quote
               </Link>
-              <Link href="#contact" className="text-muted-foreground hover:text-foreground">
+              <Link href="#contact" className="text-muted-foreground hover:text-primary">
                 Contact
               </Link>
             </nav>
           </div>
           {/* Right: Social Links */}
           <div className="grid gap-4">
-            <h4 className="font-semibold">Connect With Us</h4>
+            <h4 className="font-semibold text-foreground">Connect With Us</h4>
             <div className="flex gap-4">
-              <Link href="#" className="text-muted-foreground hover:text-foreground">
+              <Link href="#" className="text-muted-foreground hover:text-primary">
                 <Twitter />
               </Link>
-              <Link href="#" className="text-muted-foreground hover:text-foreground">
+              <Link href="#" className="text-muted-foreground hover:text-primary">
                 <Facebook />
               </Link>
-              <Link href="#" className="text-muted-foreground hover:text-foreground">
+              <Link href="#" className="text-muted-foreground hover:text-primary">
                 <Instagram />
               </Link>
             </div>

@@ -41,7 +41,7 @@ export function Services() {
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12 animate-fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
           <div className="space-y-2">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Our Services</h2>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-foreground">Our Services</h2>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               We offer a wide range of printing services to meet your needs.
             </p>
@@ -49,10 +49,10 @@ export function Services() {
         </div>
         <div className="grid justify-center gap-8 sm:grid-cols-2 lg:grid-cols-3 animate-fade-in-up" style={{ animationDelay: '0.3s', animationFillMode: 'both' }}>
           {services.map((service, index) => (
-            <Card key={index} className="flex flex-col items-center text-center p-6 transition-transform transform-gpu hover:-translate-y-2 hover:shadow-xl bg-transparent border-border">
+            <Card key={index} className="flex flex-col items-center text-center p-6 transition-transform transform-gpu hover:-translate-y-2 hover:shadow-xl bg-transparent border-none">
               <CardHeader className="p-0">
                 {service.icon}
-                <CardTitle className="mt-4">{service.title}</CardTitle>
+                <CardTitle className="mt-4 text-foreground">{service.title}</CardTitle>
               </CardHeader>
               <CardContent className="p-0 mt-2">
                 <p className="text-muted-foreground">{service.description}</p>
