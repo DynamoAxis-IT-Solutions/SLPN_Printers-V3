@@ -73,7 +73,7 @@ export function Header() {
               href={link.href}
               className={cn(
                 "font-medium transition-colors", 
-                scrolled ? 'text-gray-600 hover:text-blue-500' : 'text-black/90 hover:text-blue-500'
+                scrolled ? 'text-black hover:text-blue-500' : 'text-black/90 hover:text-blue-500'
               )}
             >
               {link.label}
