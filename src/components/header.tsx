@@ -38,7 +38,7 @@ export function Header() {
     <header
       className={cn(
         'sticky top-0 z-50 w-full transition-all duration-300',
-        scrolled ? 'bg-white shadow-md text-gray-800' : 'bg-transparent text-white'
+        scrolled ? 'bg-white shadow-md' : 'bg-transparent'
       )}
     >
       {/* Top Bar */}
@@ -71,7 +71,10 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className={cn("font-medium transition-colors", scrolled ? 'text-gray-600 hover:text-gray-900' : 'text-white/80 hover:text-white')}
+              className={cn(
+                "font-medium transition-colors", 
+                scrolled ? 'text-gray-600 hover:text-gray-900' : 'text-white/80 hover:text-white'
+              )}
             >
               {link.label}
             </Link>
