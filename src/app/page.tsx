@@ -8,7 +8,7 @@ import { Footer } from "@/components/footer";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-white">
+    <div className="flex flex-col min-h-screen bg-blue-300">
       <Header />
       <main className="flex-1">
         {/* Hero stays full width with its own background */}

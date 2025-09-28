@@ -38,11 +38,11 @@ export function Header() {
     <header
       className={cn(
         'sticky top-0 z-50 w-full transition-all duration-300',
-        scrolled ? 'bg-white shadow-md' : 'bg-transparent'
+        scrolled ? 'bg-blue-300 shadow-md' : 'bg-transparent'
       )}
     >
       {/* Top Bar */}
-      <div className={cn('transition-all duration-300', scrolled ? 'bg-gray-100' : 'bg-black/20')}>
+      <div className={cn('transition-all duration-300', scrolled ? 'bg-' : 'bg-black/30')}>
         <div className="container mx-auto flex h-10 items-center justify-between px-4">
           <div className={cn('flex items-center gap-6 text-sm', scrolled ? 'text-gray-600' : 'text-white')}>
             <a href="tel:011-2194819" className="flex items-center gap-2 hover:text-primary">
@@ -73,7 +73,7 @@ export function Header() {
               href={link.href}
               className={cn(
                 "font-medium transition-colors", 
-                scrolled ? 'text-gray-600 hover:text-gray-900' : 'text-white/80 hover:text-white'
+                scrolled ? 'text-gray-600 hover:text-blue-500' : 'text-black/90 hover:text-blue-500'
               )}
             >
               {link.label}
