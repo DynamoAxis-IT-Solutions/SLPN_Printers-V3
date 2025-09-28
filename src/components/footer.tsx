@@ -4,7 +4,7 @@ import Link from "next/link";
 export function Footer() {
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="w-full bg-gray-100 border-t">
+    <footer className="w-full bg-blue-300 border-t">
       {/* Full-width container with max-width inside */}
       <div className="mx-auto w-full max-w-7xl px-6 py-12">
         <div className="grid gap-8 md:grid-cols-3">
