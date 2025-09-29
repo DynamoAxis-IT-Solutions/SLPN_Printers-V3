@@ -53,11 +53,15 @@ export function Quote() {
                       </SelectContent>
                     </Select>
                   </div>
-                  <div className="space-y-2">
+                   <div className="space-y-2">
+                    <Label htmlFor="contact-number">Contact Number</Label>
+                    <Input id="contact-number" type="tel" placeholder="e.g., +1 234 567 890" required />
+                  </div>
+                </div>
+                 <div className="space-y-2">
                     <Label htmlFor="quantity">Quantity</Label>
                     <Input id="quantity" type="number" placeholder="e.g., 500" required />
                   </div>
-                </div>
                 <div className="space-y-2">
                   <Label htmlFor="details">Project Details</Label>
                   <Textarea id="details" placeholder="Please provide details like size, paper type, colors, etc." className="min-h-[120px]" />
