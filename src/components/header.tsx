@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -7,18 +8,21 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu, Mail, Phone } from 'lucide-react';
 import { Logo } from './logo';
 import { cn } from '@/lib/utils';
+import { usePathname } from 'next/navigation';
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '#about', label: 'About' },
-  { href: '#services', label: 'Services' },
-  { href: '#portfolio', label: 'Portfolio' },
-  { href: '#contact', label: 'Contact' },
+  { href: '/about', label: 'About' },
+  { href: '/#services', label: 'Services' },
+  { href: '/#portfolio', label: 'Portfolio' },
+  { href: '/#contact', label: 'Contact' },
 ];
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,28 +38,32 @@ export function Header() {
     };
   }, [scrolled]);
 
+  // Determine if header should be transparent
+  // Only transparent on homepage when not scrolled
+  const isTransparent = isHome && !scrolled;
+
   return (
     <header
       className={cn(
         'sticky top-0 z-50 w-full transition-all duration-300',
-        scrolled ? 'bg-blue-300 shadow-md' : 'bg-transparent'
+        isTransparent ? 'bg-transparent' : 'bg-white shadow-md'
       )}
     >
       {/* Top Bar */}
-      <div className={cn('transition-all duration-300', scrolled ? 'bg-' : 'bg-black/30')}>
+      <div className={cn('transition-all duration-300', isTransparent ? 'bg-black/20' : 'bg-gray-100 border-b')}>
         <div className="container mx-auto flex h-10 items-center justify-between px-4">
-          <div className={cn('flex items-center gap-6 text-sm', scrolled ? 'text-gray-600' : 'text-white')}>
+          <div className={cn('flex items-center gap-6 text-sm', isTransparent ? 'text-white' : 'text-gray-600')}>
             <a href="tel:011-2194819" className="flex items-center gap-2 hover:text-primary">
-              <Phone size={16} />
+              <Phone size={14} />
               <span>011-2194819</span>
             </a>
             <a href="mailto:slpn.pr@gmail.com" className="flex items-center gap-2 hover:text-primary">
-              <Mail size={16} />
+              <Mail size={14} />
               <span>slpn.pr@gmail.com</span>
             </a>
           </div>
-          <Button asChild className="hidden h-8 rounded-full bg-primary px-6 text-sm text-primary-foreground hover:bg-primary/90 md:block">
-            <Link href="#quote">Make Quotation</Link>
+          <Button asChild className={cn("hidden h-8 rounded-full px-6 text-sm md:block", isTransparent ? "bg-white text-black hover:bg-gray-200" : "bg-primary text-white hover:bg-primary/90")}>
+            <Link href="/#quote">Make Quotation</Link>
           </Button>
         </div>
       </div>
@@ -63,7 +71,7 @@ export function Header() {
       {/* Main Navigation */}
       <div className="container mx-auto flex items-center justify-between px-4 py-1 h-16">
         <div className="flex items-center">
-            <Logo className="h-12 w-40" />
+            <Logo className={cn("h-12 w-40 transition-all", isTransparent && "brightness-0 invert")} />
         </div>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -73,7 +81,7 @@ export function Header() {
               href={link.href}
               className={cn(
                 "font-medium transition-colors", 
-                scrolled ? 'text-black hover:text-blue-500' : 'text-black/90 hover:text-blue-500'
+                isTransparent ? 'text-white hover:text-primary' : 'text-gray-800 hover:text-primary'
               )}
             >
               {link.label}
@@ -84,7 +92,7 @@ export function Header() {
         <div className="md:hidden">
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className={cn(scrolled ? 'text-gray-800' : 'text-white')}>
+              <Button variant="ghost" size="icon" className={cn(isTransparent ? 'text-white' : 'text-gray-800')}>
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Toggle Menu</span>
               </Button>
@@ -105,7 +113,7 @@ export function Header() {
                   ))}
                 </nav>
                  <Button asChild className="rounded-full bg-primary px-6 text-sm text-primary-foreground hover:bg-primary/90">
-                    <Link href="#quote">Make Quotation</Link>
+                    <Link href="/#quote" onClick={() => setIsOpen(false)}>Make Quotation</Link>
                 </Button>
               </div>
             </SheetContent>
