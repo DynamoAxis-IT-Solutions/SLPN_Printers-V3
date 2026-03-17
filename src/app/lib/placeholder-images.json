@@ -38,5 +38,8 @@
   "serviceMarketing": { "url": "https://picsum.photos/seed/s-mkt/800/600", "width": 800, "height": 600, "alt": "Marketing Materials", "hint": "marketing flyers" },
   "servicePub": { "url": "https://picsum.photos/seed/s-pub/800/600", "width": 800, "height": 600, "alt": "Publications", "hint": "magazines books" },
   "servicePkg": { "url": "https://picsum.photos/seed/s-pkg/800/600", "width": 800, "height": 600, "alt": "Packaging Printing", "hint": "packaging box" },
-  "serviceFinish": { "url": "https://picsum.photos/seed/s-fin/800/600", "width": 800, "height": 600, "alt": "Value Added Finishes", "hint": "print finish" }
+  "serviceFinish": { "url": "https://picsum.photos/seed/s-fin/800/600", "width": 800, "height": 600, "alt": "Value Added Finishes", "hint": "print finish" },
+  "teamSupun": { "url": "/about/supun.webp", "width": 600, "height": 600, "alt": "Supun - Director", "hint": "portrait man" },
+  "teamSudanga": { "url": "/about/sudanga.webp", "width": 300, "height": 300, "alt": "Sudanga - Head of Services", "hint": "portrait man" },
+  "teamJayathilaka": { "url": "/about/jayathilaka.webp", "width": 300, "height": 300, "alt": "Jayathilaka - Head of Operations", "hint": "portrait man" }
 }
