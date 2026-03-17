@@ -1,6 +1,6 @@
 'use client';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Paintbrush, FileText, Megaphone, Box, Layers, BookOpen } from "lucide-react";
+import { Paintbrush, IdCard, Megaphone, Package, Layers, BookOpen } from "lucide-react";
 
 const services = [
   {
@@ -9,7 +9,7 @@ const services = [
     description: "Creative designs that capture your brand's essence, from logos to full branding packages.",
   },
   {
-    icon: <FileText className="h-12 w-12 text-primary" />,
+    icon: <IdCard className="h-12 w-12 text-primary" />,
     title: "Business Cards",
     description: "Premium quality business cards with various finishes to make a strong first impression.",
   },
@@ -19,7 +19,7 @@ const services = [
     description: "High-impact flyers, brochures, and posters to effectively promote your business.",
   },
   {
-    icon: <Box className="h-12 w-12 text-primary" />,
+    icon: <Package className="h-12 w-12 text-primary" />,
     title: "Packaging",
     description: "Custom packaging solutions that protect your products and delight your customers.",
   },
@@ -38,24 +38,26 @@ const services = [
 export function Services() {
   return (
     <section id="services" className="w-full py-12 md:py-24 lg:py-32">
-      <div className="container px-4 md:px-6">
+      <div className="container px-4 md:px-6 mx-auto">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12 animate-fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
           <div className="space-y-2">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-foreground">Our Services</h2>
-            <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed mx-auto">
               We offer a wide range of printing services to meet your needs.
             </p>
           </div>
         </div>
         <div className="grid justify-center gap-8 sm:grid-cols-2 lg:grid-cols-3 animate-fade-in-up" style={{ animationDelay: '0.3s', animationFillMode: 'both' }}>
           {services.map((service, index) => (
-            <Card key={index} className="flex flex-col items-center text-center p-6 transition-transform transform-gpu hover:-translate-y-2 hover:shadow-xl bg-transparent border-none">
-              <CardHeader className="p-0">
-                {service.icon}
-                <CardTitle className="mt-4 text-foreground">{service.title}</CardTitle>
+            <Card key={index} className="flex flex-col items-center text-center p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl bg-white border border-gray-100">
+              <CardHeader className="p-0 flex flex-col items-center">
+                <div className="mb-4">
+                  {service.icon}
+                </div>
+                <CardTitle className="text-xl font-bold text-foreground">{service.title}</CardTitle>
               </CardHeader>
-              <CardContent className="p-0 mt-2">
-                <p className="text-muted-foreground">{service.description}</p>
+              <CardContent className="p-0 mt-4">
+                <p className="text-muted-foreground leading-relaxed">{service.description}</p>
               </CardContent>
             </Card>
           ))}
