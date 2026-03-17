@@ -9,6 +9,7 @@ import { CheckCircle2 } from "lucide-react";
 
 const serviceSections = [
   {
+    id: "business-corporate",
     title: "Business & Corporate Printing",
     items: [
       "Business cards",
@@ -22,6 +23,7 @@ const serviceSections = [
     color: "bg-[#E91E63]" // Pink/Magenta from image
   },
   {
+    id: "marketing-promotional",
     title: "Marketing & Promotional Materials",
     items: [
       "Flyers, leaflets, and handbills",
@@ -35,6 +37,7 @@ const serviceSections = [
     color: "bg-[#03A9F4]" // Light Blue from image
   },
   {
+    id: "publications-stationery",
     title: "Publications & Stationery",
     items: [
       "Magazines and newsletters",
@@ -47,6 +50,7 @@ const serviceSections = [
     color: "bg-[#1A237E]" // Dark Blue from image
   },
   {
+    id: "packaging-printing",
     title: "Packaging Printing",
     items: [
       "Box sleeves and product packaging",
@@ -58,6 +62,7 @@ const serviceSections = [
     color: "bg-[#673AB7]" // Purple from image
   },
   {
+    id: "value-added-finishes",
     title: "Value-Added Finishes",
     items: [
       "Gloss, matte, or spot UV coating",
@@ -95,7 +100,8 @@ export default function ServicesPage() {
             {serviceSections.map((section, index) => (
               <div 
                 key={index} 
-                className={`grid gap-12 lg:grid-cols-2 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
+                id={section.id}
+                className={`grid gap-12 lg:grid-cols-2 items-center scroll-mt-32 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
               >
                 {/* Text Side */}
                 <div className={`space-y-8 ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
