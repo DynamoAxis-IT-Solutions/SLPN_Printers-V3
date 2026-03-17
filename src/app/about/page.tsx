@@ -1,4 +1,3 @@
-
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import Image from "next/image";
@@ -55,12 +54,14 @@ export default function AboutPage() {
                   </div>
                 </div>
               </div>
-              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl bg-white p-8 border">
+              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl bg-white flex items-center justify-center p-8 border">
                 <Image
-                  src="/logo2.jpg"
+                  src="/logo.png"
                   alt="SLPN Printers Logo"
-                  fill
-                  className="object-contain p-12"
+                  width={400}
+                  height={200}
+                  className="object-contain"
+                  priority
                 />
               </div>
             </div>

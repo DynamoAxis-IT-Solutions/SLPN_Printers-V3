@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -22,25 +21,26 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-  const isHome = pathname === '/';
+  
+  // Hydration state to avoid hook issues during SSR
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => {
       const isScrolled = window.scrollY > 50;
       setScrolled(isScrolled);
     };
 
     window.addEventListener('scroll', handleScroll);
-    // Initial check
     handleScroll();
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
-  // Determine if header should be transparent
-  // Only transparent on homepage when not scrolled
-  const isTransparent = isHome && !scrolled;
+  const isHome = pathname === '/';
+  const isTransparent = mounted && isHome && !scrolled;
 
   return (
     <header
@@ -53,16 +53,16 @@ export function Header() {
       <div className={cn('transition-all duration-300', isTransparent ? 'bg-black/20' : 'bg-gray-100 border-b')}>
         <div className="container mx-auto flex h-10 items-center justify-between px-4">
           <div className={cn('flex items-center gap-6 text-sm', isTransparent ? 'text-white' : 'text-gray-600')}>
-            <a href="tel:011-2194819" className="flex items-center gap-2 hover:text-primary">
+            <a href="tel:011-2194819" className="flex items-center gap-2 hover:text-primary transition-colors">
               <Phone size={14} />
-              <span>011-2194819</span>
+              <span className="hidden sm:inline">011-2194819</span>
             </a>
-            <a href="mailto:slpn.pr@gmail.com" className="flex items-center gap-2 hover:text-primary">
+            <a href="mailto:slpn.pr@gmail.com" className="flex items-center gap-2 hover:text-primary transition-colors">
               <Mail size={14} />
-              <span>slpn.pr@gmail.com</span>
+              <span className="hidden sm:inline">slpn.pr@gmail.com</span>
             </a>
           </div>
-          <Button asChild className={cn("hidden h-8 rounded-full px-6 text-sm md:block", isTransparent ? "bg-white text-black hover:bg-gray-200" : "bg-primary text-white hover:bg-primary/90")}>
+          <Button asChild className={cn("h-8 rounded-full px-6 text-sm", isTransparent ? "bg-white text-black hover:bg-gray-200" : "bg-primary text-white hover:bg-primary/90")}>
             <Link href="/#quote">Make Quotation</Link>
           </Button>
         </div>
@@ -106,7 +106,7 @@ export function Header() {
                       key={link.href}
                       href={link.href}
                       onClick={() => setIsOpen(false)}
-                      className="text-lg font-medium text-gray-600 hover:text-primary"
+                      className="text-lg font-medium text-gray-600 hover:text-primary transition-colors"
                     >
                       {link.label}
                     </Link>
