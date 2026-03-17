@@ -29,25 +29,25 @@ export function Clients() {
   // Prevent hydration mismatch
   if (!mounted) {
     return (
-      <section className="w-full py-16 bg-gray-50 overflow-hidden border-t">
+      <section className="w-full py-20 bg-gray-50 overflow-hidden border-t">
         <div className="container px-4 text-center mx-auto">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-foreground">
             Our Valued Clients
           </h2>
-          <div className="mt-12 h-32 flex items-center justify-center">
-            <div className="animate-pulse bg-gray-200 w-full max-w-6xl h-full rounded-lg" />
+          <div className="mt-16 h-48 flex items-center justify-center">
+            <div className="animate-pulse bg-gray-200 w-full max-w-6xl h-full rounded-xl" />
           </div>
         </div>
       </section>
     );
   }
 
-  // Duplicate the list multiple times for a seamless infinite scroll
+  // Duplicate the list multiple times for a seamless infinite scroll across all screen widths
   const scrollLogos = [...clientLogos, ...clientLogos, ...clientLogos, ...clientLogos];
 
   return (
-    <section className="w-full py-20 bg-gray-50 overflow-hidden border-t">
-      <div className="container px-4 md:px-6 mb-16 text-center mx-auto">
+    <section className="w-full py-24 bg-gray-50 overflow-hidden border-t">
+      <div className="container px-4 md:px-6 mb-20 text-center mx-auto">
         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-foreground">
           Our Valued Clients
         </h2>
@@ -57,24 +57,24 @@ export function Clients() {
       </div>
 
       <div className="relative flex overflow-hidden">
-        {/* Fade masks for the edges */}
-        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-gray-50 to-transparent z-10" />
-        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-gray-50 to-transparent z-10" />
+        {/* Fade masks for the edges to create a professional look */}
+        <div className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-gray-50 to-transparent z-10" />
+        <div className="absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-gray-50 to-transparent z-10" />
 
-        <div className="flex animate-scroll whitespace-nowrap w-max py-8">
+        <div className="flex animate-scroll whitespace-nowrap w-max py-10">
           {scrollLogos.map((logo, index) => (
             <div
               key={index}
-              className="flex shrink-0 items-center justify-center px-12 w-64 h-32 transition-all duration-300 group"
+              className="flex shrink-0 items-center justify-center px-16 w-80 h-48 transition-all duration-300 group"
             >
-              <div className="relative w-full h-full grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
+              <div className="relative w-full h-full grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
                 <img
                   src={logo}
                   alt={`Client Logo ${(index % clientLogos.length) + 1}`}
                   className="max-w-full max-h-full object-contain pointer-events-none transform group-hover:scale-110 transition-transform duration-500"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
-                    target.src = `https://placehold.co/300x150?text=Client+${(index % clientLogos.length) + 1}`;
+                    target.src = `https://placehold.co/400x200?text=Client+${(index % clientLogos.length) + 1}`;
                     target.onerror = null; 
                   }}
                 />
