@@ -78,12 +78,12 @@ export default function AboutPage() {
               {/* Director Section */}
               <div className="grid gap-12 lg:grid-cols-5 items-center mb-24">
                 <div className="lg:col-span-2">
-                  <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl border-8 border-white">
+                  <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl border-8 border-white bg-white">
                     <Image
                       src={placeholders.teamSupun.url}
                       alt={placeholders.teamSupun.alt}
                       fill
-                      className="object-cover"
+                      className="object-contain p-4"
                       data-ai-hint={placeholders.teamSupun.hint}
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
@@ -119,12 +119,12 @@ export default function AboutPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 justify-center max-w-3xl mx-auto">
                 {/* Sudanga */}
                 <div className="flex flex-col items-center text-center space-y-6 group">
-                  <div className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-300 group-hover:scale-105">
+                  <div className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-300 group-hover:scale-105 bg-white">
                     <Image
                       src={placeholders.teamSudanga.url}
                       alt={placeholders.teamSudanga.alt}
                       fill
-                      className="object-cover"
+                      className="object-contain p-2"
                       data-ai-hint={placeholders.teamSudanga.hint}
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
@@ -140,12 +140,12 @@ export default function AboutPage() {
                 </div>
                 {/* Jayathilaka */}
                 <div className="flex flex-col items-center text-center space-y-6 group">
-                  <div className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-300 group-hover:scale-105">
+                  <div className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-300 group-hover:scale-105 bg-white">
                     <Image
                       src={placeholders.teamJayathilaka.url}
                       alt={placeholders.teamJayathilaka.alt}
                       fill
-                      className="object-cover"
+                      className="object-contain p-2"
                       data-ai-hint={placeholders.teamJayathilaka.hint}
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
