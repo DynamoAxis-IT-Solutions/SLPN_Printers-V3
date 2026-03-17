@@ -11,9 +11,12 @@ import {
 import Autoplay from "embla-carousel-autoplay";
 
 const carouselItems = [
-  { url: "/slider/1.webp", alt: "SLPN Printers - Quality Offset Printing", hint: "printing press" },
-  { url: "/slider/2.webp", alt: "High-end Packaging Solutions", hint: "packaging design" },
-  { url: "/slider/3.webp", alt: "Vibrant Marketing Materials", hint: "marketing prints" },
+  { url: "/slider/img1.webp", alt: "SLPN Printers - Quality Offset Printing", hint: "printing press" },
+  { url: "/slider/img2.webp", alt: "High-end Packaging Solutions", hint: "packaging design" },
+  { url: "/slider/img3.webp", alt: "Vibrant Marketing Materials", hint: "marketing prints" },
+  { url: "/slider/img4.webp", alt: "Vibrant Marketing Materials", hint: "marketing prints" },
+  { url: "/slider/img5.webp", alt: "Vibrant Marketing Materials", hint: "marketing prints" },
+  { url: "/slider/img7.webp", alt: "Vibrant Marketing Materials", hint: "marketing prints" },
 ];
 
 export function Hero() {

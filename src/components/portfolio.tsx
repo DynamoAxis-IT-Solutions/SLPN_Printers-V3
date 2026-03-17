@@ -2,41 +2,48 @@
 'use client';
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
-import placeholders from "@/app/lib/placeholder-images.json";
 
-const portfolioItems = [
-  placeholders.portfolio1,
-  placeholders.portfolio2,
-  placeholders.portfolio3,
-  placeholders.portfolio4,
-  placeholders.portfolio5,
-  placeholders.portfolio6,
+const portfolioImages = [
+  { url: "/portfolio/1.webp", alt: "Printing Project 1", hint: "print project" },
+  { url: "/portfolio/2.webp", alt: "Printing Project 2", hint: "packaging project" },
+  { url: "/portfolio/3.webp", alt: "Printing Project 3", hint: "offset project" },
+  { url: "/portfolio/4.webp", alt: "Printing Project 4", hint: "branding project" },
+  { url: "/portfolio/5.webp", alt: "Printing Project 5", hint: "stationery project" },
+  { url: "/portfolio/6.webp", alt: "Printing Project 6", hint: "marketing project" },
 ];
 
 export function Portfolio() {
   return (
     <section id="portfolio" className="w-full py-12 md:py-24 lg:py-32">
-      <div className="container px-4 md:px-6">
+      <div className="container px-4 md:px-6 mx-auto">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12 animate-fade-in-up" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
           <div className="space-y-2">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-foreground">Our Portfolio</h2>
-            <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed mx-auto">
               A glimpse into our world of quality printing and design.
             </p>
           </div>
         </div>
-        <div className="grid justify-center gap-4 sm:grid-cols-2 lg:grid-cols-3 animate-fade-in-up" style={{ animationDelay: '0.5s', animationFillMode: 'both' }}>
-          {portfolioItems.map((item, index) => (
-            <Card key={index} className="overflow-hidden group bg-transparent border rounded-lg">
+        <div className="grid justify-center gap-6 sm:grid-cols-2 lg:grid-cols-3 animate-fade-in-up" style={{ animationDelay: '0.5s', animationFillMode: 'both' }}>
+          {portfolioImages.map((item, index) => (
+            <Card key={index} className="overflow-hidden group bg-white border-none shadow-md rounded-xl transition-all duration-300 hover:shadow-xl">
               <CardContent className="p-0">
-                <Image
-                  src={item.url}
-                  alt={item.alt}
-                  width={item.width}
-                  height={item.height}
-                  className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
-                  data-ai-hint={item.hint}
-                />
+                <div className="relative aspect-[4/3] w-full">
+                  <Image
+                    src={item.url}
+                    alt={item.alt}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    data-ai-hint={item.hint}
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = `https://picsum.photos/seed/slpn-portfolio-${index}/600/450`;
+                      target.onerror = null;
+                    }}
+                  />
+                  {/* Hover Overlay */}
+                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
               </CardContent>
             </Card>
           ))}
