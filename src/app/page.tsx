@@ -2,6 +2,7 @@ import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
 import { Services } from "@/components/services";
 import { Portfolio } from "@/components/portfolio";
+import { Clients } from "@/components/clients";
 import { Quote } from "@/components/quote";
 import { Contact } from "@/components/contact";
 import { Footer } from "@/components/footer";
@@ -27,6 +28,9 @@ export default function Home() {
             <Portfolio />
           </div>
         </section>
+
+        {/* Clients Section */}
+        <Clients />
 
         {/* Quote */}
         <section className="w-full py-20 bg-gray-50">
