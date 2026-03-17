@@ -26,14 +26,14 @@ export function Portfolio() {
         </div>
         <div className="grid justify-center gap-6 sm:grid-cols-2 lg:grid-cols-3 animate-fade-in-up" style={{ animationDelay: '0.5s', animationFillMode: 'both' }}>
           {portfolioImages.map((item, index) => (
-            <Card key={index} className="overflow-hidden group bg-white border-none shadow-md rounded-xl transition-all duration-300 hover:shadow-xl">
+            <Card key={index} className="overflow-hidden group bg-gray-50/50 border border-gray-100 shadow-sm rounded-xl transition-all duration-300 hover:shadow-lg">
               <CardContent className="p-0">
-                <div className="relative aspect-[4/3] w-full">
+                <div className="relative aspect-[4/3] w-full bg-white">
                   <Image
                     src={item.url}
                     alt={item.alt}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="object-contain p-4 transition-transform duration-500 group-hover:scale-110"
                     data-ai-hint={item.hint}
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
@@ -42,7 +42,7 @@ export function Portfolio() {
                     }}
                   />
                   {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                 </div>
               </CardContent>
             </Card>
