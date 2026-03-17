@@ -2,7 +2,6 @@
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import Image from "next/image";
-import placeholders from "@/app/lib/placeholder-images.json";
 
 export default function AboutPage() {
   return (
@@ -29,20 +28,20 @@ export default function AboutPage() {
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-foreground">
                   Our Story
                 </h2>
-                <p className="text-lg text-muted-foreground">
-                SLPN Printers is a trusted leader in printing
-and packaging, serving both local and
-international markets. With a strong focus
-on premium quality and exceptional
-customer service, we deliver the best
-value for your investment. Our highly
-trained and experienced team ensures
-every project is handled with precision,
-efficiency, and on-time delivery - helping
-your brand stand out with unmatched
-print excellence.
+                <p className="text-lg text-muted-foreground text-justify">
+                  SLPN Printers is a trusted leader in printing
+                  and packaging, serving both local and
+                  international markets. With a strong focus
+                  on premium quality and exceptional
+                  customer service, we deliver the best
+                  value for your investment. Our highly
+                  trained and experienced team ensures
+                  every project is handled with precision,
+                  efficiency, and on-time delivery - helping
+                  your brand stand out with unmatched
+                  print excellence.
                 </p>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-lg text-muted-foreground text-justify">
                   We specialize in offset and digital printing, packaging solutions, and large-format signage. Our team of experienced designers and technicians work tirelessly to ensure that every project meets our rigorous standards for color accuracy and finish.
                 </p>
                 <div className="grid grid-cols-2 gap-6 pt-4">
@@ -56,13 +55,12 @@ print excellence.
                   </div>
                 </div>
               </div>
-              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl">
+              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl bg-white p-8 border">
                 <Image
-                  src={placeholders.facility.url}
-                  alt={placeholders.facility.alt}
+                  src="/logo.png"
+                  alt="SLPN Printers Logo"
                   fill
-                  className="object-cover"
-                  data-ai-hint={placeholders.facility.hint}
+                  className="object-contain p-12"
                 />
               </div>
             </div>
