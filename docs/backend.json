@@ -1,0 +1,318 @@
+{
+  "entities": {
+    "Service": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Service",
+      "type": "object",
+      "description": "Represents a specific printing service offered by SLPN Prints Online.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Service entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the printing service (e.g., 'Business Card Printing')."
+        },
+        "description": {
+          "type": "string",
+          "description": "A detailed description of the service provided."
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "URL to an image representing the service.",
+          "format": "uri"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description",
+        "imageUrl"
+      ]
+    },
+    "PortfolioItem": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "PortfolioItem",
+      "type": "object",
+      "description": "Represents an item in the company's portfolio showcasing past work.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the PortfolioItem entity."
+        },
+        "title": {
+          "type": "string",
+          "description": "The title or name of the portfolio piece."
+        },
+        "description": {
+          "type": "string",
+          "description": "A brief description of the work and its details."
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "URL to a high-quality image of the portfolio item.",
+          "format": "uri"
+        },
+        "category": {
+          "type": "string",
+          "description": "The category of the portfolio item (e.g., 'Brochures', 'Posters', 'Business Cards')."
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "description",
+        "imageUrl",
+        "category"
+      ]
+    },
+    "Inquiry": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Inquiry",
+      "type": "object",
+      "description": "Represents a general inquiry submitted by a user through the contact form.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Inquiry entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "The full name of the person submitting the inquiry."
+        },
+        "email": {
+          "type": "string",
+          "description": "The email address of the person submitting the inquiry.",
+          "format": "email"
+        },
+        "subject": {
+          "type": "string",
+          "description": "The subject of the inquiry."
+        },
+        "message": {
+          "type": "string",
+          "description": "The detailed message or question from the user."
+        },
+        "submittedAt": {
+          "type": "string",
+          "description": "The timestamp when the inquiry was submitted.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "email",
+        "subject",
+        "message",
+        "submittedAt"
+      ]
+    },
+    "CarouselItem": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "CarouselItem",
+      "type": "object",
+      "description": "Represents an item displayed in the homepage carousel for promotion or service showcase.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the CarouselItem entity."
+        },
+        "title": {
+          "type": "string",
+          "description": "The main title displayed on the carousel item."
+        },
+        "description": {
+          "type": "string",
+          "description": "A brief description or tagline for the carousel item."
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "URL to the image displayed in the carousel item.",
+          "format": "uri"
+        },
+        "order": {
+          "type": "number",
+          "description": "The display order of the carousel item on the homepage."
+        },
+        "linkUrl": {
+          "type": "string",
+          "description": "An optional URL that the carousel item links to, e.g., a service page or portfolio item.",
+          "format": "uri"
+        },
+        "serviceId": {
+          "type": "string",
+          "description": "Optional reference to a Service entity that this carousel item promotes. (Relationship: Service 1:N CarouselItem)"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "description",
+        "imageUrl",
+        "order"
+      ]
+    },
+    "QuotationRequest": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "QuotationRequest",
+      "type": "object",
+      "description": "Represents a request for a quotation submitted by a user for specific printing needs.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the QuotationRequest entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "The full name of the person requesting the quote."
+        },
+        "email": {
+          "type": "string",
+          "description": "The email address of the person requesting the quote.",
+          "format": "email"
+        },
+        "phone": {
+          "type": "string",
+          "description": "The optional phone number of the person requesting the quote."
+        },
+        "serviceId": {
+          "type": "string",
+          "description": "Reference to the Service entity for which the quote is being requested. (Relationship: Service 1:N QuotationRequest)"
+        },
+        "details": {
+          "type": "string",
+          "description": "Detailed description of the user's specific printing requirements (e.g., paper type, finish, specific dimensions)."
+        },
+        "quantity": {
+          "type": "number",
+          "description": "The requested quantity for the printing service."
+        },
+        "deadline": {
+          "type": "string",
+          "description": "Optional desired completion date for the printing job.",
+          "format": "date-time"
+        },
+        "submittedAt": {
+          "type": "string",
+          "description": "The timestamp when the quotation request was submitted.",
+          "format": "date-time"
+        },
+        "status": {
+          "type": "string",
+          "description": "The current status of the quotation request (e.g., 'Pending', 'In Progress', 'Quoted', 'Completed', 'Cancelled')."
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "email",
+        "serviceId",
+        "details",
+        "quantity",
+        "submittedAt",
+        "status"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/services/{serviceId}",
+        "definition": {
+          "entityName": "Service",
+          "schema": {
+            "$ref": "#/backend/entities/Service"
+          },
+          "description": "Collection of all available printing services offered by SLPN Prints Online. This data is public and read-only for all users."
+        }
+      },
+      {
+        "path": "/portfolioItems/{portfolioItemId}",
+        "definition": {
+          "entityName": "PortfolioItem",
+          "schema": {
+            "$ref": "#/backend/entities/PortfolioItem"
+          },
+          "description": "Collection showcasing the company's past work and portfolio items. This data is public and read-only for all users."
+        }
+      },
+      {
+        "path": "/inquiries/{inquiryId}",
+        "definition": {
+          "entityName": "Inquiry",
+          "schema": {
+            "$ref": "#/backend/entities/Inquiry"
+          },
+          "description": "Collection for general inquiries submitted by users through the contact form. These documents are intended for internal staff review and are restricted to administrators. Submissions can be made by anonymous or authenticated users.",
+          "params": [
+            {
+              "name": "inquiryId",
+              "description": "The unique identifier for an inquiry."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/carouselItems/{carouselItemId}",
+        "definition": {
+          "entityName": "CarouselItem",
+          "schema": {
+            "$ref": "#/backend/entities/CarouselItem"
+          },
+          "description": "Collection for items displayed in the homepage carousel. This data is public and read-only for all users, primarily for promotional display.",
+          "params": [
+            {
+              "name": "carouselItemId",
+              "description": "The unique identifier for a carousel item."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/quotationRequests/{quotationRequestId}",
+        "definition": {
+          "entityName": "QuotationRequest",
+          "schema": {
+            "$ref": "#/backend/entities/QuotationRequest"
+          },
+          "description": "Subcollection under a specific user for all quotation requests submitted by that user. Access is restricted to the submitting user (owner) and administrators. Ownership is derived from the path (`userId`).",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique identifier of the user who owns this quotation request. Matches `request.auth.uid`."
+            },
+            {
+              "name": "quotationRequestId",
+              "description": "The unique identifier for a specific quotation request."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/roles_admin/{adminUid}",
+        "definition": {
+          "entityName": "role",
+          "schema": {
+            "$ref": "#/backend/entities/role"
+          },
+          "description": "Collection for defining administrative roles. The existence of a document at `/roles_admin/{uid}` grants administrative privileges to the user with the matching UID. This is used for database access control (DBAC) for internal data like inquiries.",
+          "params": [
+            {
+              "name": "adminUid",
+              "description": "The unique identifier (UID) of a user who has administrative privileges."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The Firestore structure is designed to be secure, scalable, and debuggable, strictly adhering to the core design principles and strategy mandates. \n\n**Authorization Independence via Denormalization:**\n*   For `QuotationRequest` entities, authorization is achieved through **Path-Based Ownership**. Each request is stored under `/users/{userId}/quotationRequests/{quotationRequestId}`. The `userId` in the path explicitly denotes the owner. Firebase Security Rules can directly compare `request.auth.uid` with `userId` from the path, completely eliminating the need for `get()` operations. This makes authorization atomic and independent of parent document data. No denormalization of owner details is needed within the `QuotationRequest` document itself, as ownership is implicit in its path.\n*   For `Inquiry` entities, which are submitted by users (potentially anonymous) but managed by administrators, authorization relies on a **Global Roles (DBAC) model**. Administrator access is determined by the existence of a document in the `/roles_admin/{adminUid}` collection. Security rules can check `exists(/databases/$(database)/documents/roles_admin/$(request.auth.uid))` to grant administrative privileges without performing any `get()` calls on `inquiries` documents or their non-existent parents. This ensures authorization independence for administrative access.\n*   For `Service`, `PortfolioItem`, and `CarouselItem` entities, the data is public and read-only for all users. Therefore, no specific authorization context (like `ownerId` or `members` map) is required, inherently ensuring authorization independence.\n\n**QAPs (Rules are not Filters):**\n*   **`services`**, **`portfolioItems`**, **`carouselItems`**: These collections contain public data. Security rules will allow all read access, satisfying QAPs as any list operation will return exactly what the user is authorized to see (everything).\n*   **`inquiries`**: This collection is segregated for internal administrative use. Security rules will permit read/list operations only to authenticated administrators (determined by the `/roles_admin` collection). This ensures that `list` operations will only return data to authorized users, fully supporting QAPs.\n*   **`users/{userId}/quotationRequests`**: This structure naturally enforces QAPs for user-specific data. A user querying `/users/{userId}/quotationRequests` will only be authorized to read/list documents if `request.auth.uid == userId`. This path-based ownership means the `list` operation is inherently secure and does not require server-side filtering after fetching. The `userId` acts as an implicit filter, ensuring only relevant data is returned to the authenticated user.\n\n**Structural Segregation:**\n*   Publicly viewable data (`services`, `portfolioItems`, `carouselItems`) are stored in top-level collections, separate from user-specific or administrative data. This provides a homogeneous security posture for each collection, simplifying rules to allow public reads.\n*   User-owned data (`quotationRequests`) is strictly segregated under `/users/{userId}/...`, ensuring that data for one user is not mixed with another, making ownership rules straightforward.\n*   Administrative-only data (`inquiries`, `roles_admin`) are in dedicated top-level collections, ensuring that their restricted access is clearly defined and separated from public or user-specific data.\n\nThis design prioritizes clarity, explicit authorization intent, and robust security rules by minimizing dependencies and leveraging path-based ownership and existence checks for roles."
+  }
+}

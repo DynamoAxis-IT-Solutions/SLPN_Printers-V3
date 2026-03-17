@@ -1,0 +1,134 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /**
+     * SLPN Prints Online Security Rules
+     *
+     * CORE PHILOSOPHY:
+     * This ruleset implements a hybrid security model designed for a professional printing service. 
+     * It combines public visibility for marketing content (Services, Portfolio, Carousel) with 
+     * restricted, path-based ownership for customer requests and a global admin role system 
+     * for internal management.
+     *
+     * DATA STRUCTURE:
+     * - Public Content: /services, /portfolioItems, /carouselItems (Read-only for public).
+     * - User Data: /users/{userId}/quotationRequests (Owner-access via path).
+     * - Internal/Lead Data: /inquiries (Public submission, Admin-only management).
+     * - Authorization: /roles_admin/{adminUid} (Presence grants admin privileges).
+     *
+     * KEY SECURITY DECISIONS:
+     * - Path-Based Ownership: For Quotation Requests, ownership is derived directly from the 
+     *   document path (/users/{userId}/...), ensuring high-performance authorization without 
+     *   additional database lookups.
+     * - Admin Elevation: A dedicated collection `roles_admin` acts as the source of truth for 
+     *   administrative privileges. This allows the system to scale its internal operations 
+     *   without modifying individual user documents.
+     * - Anonymous Inquiries: General inquiries allow anonymous creation to lower friction 
+     *   for potential customers, while strictly protecting those documents for admin-only viewing.
+     */
+
+    // --- Helper Functions ---
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    // Combined ownership and existence check for updates/deletes
+    function isExistingOwner(userId) {
+      return isOwner(userId) && resource != null;
+    }
+
+    // Checks for administrative privileges based on the roles_admin collection
+    function isAdmin() {
+      return isSignedIn() && exists(/databases/$(database)/documents/roles_admin/$(request.auth.uid));
+    }
+
+    // --- Collection Rules ---
+
+    /**
+     * @description Publicly viewable list of printing services.
+     * @path /services/{serviceId}
+     * @allow get, list: if true; (Public)
+     * @deny create, update, delete: if !isAdmin(); (Only admins modify catalog)
+     * @principle Public Read with Admin-Only Writes.
+     */
+    match /services/{serviceId} {
+      allow get, list: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    /**
+     * @description Publicly viewable portfolio showcasing past work.
+     * @path /portfolioItems/{portfolioItemId}
+     * @allow get, list: if true; (Public)
+     * @deny create, update, delete: if !isAdmin(); (Admin only content management)
+     * @principle Public Read with Admin-Only Writes.
+     */
+    match /portfolioItems/{portfolioItemId} {
+      allow get, list: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    /**
+     * @description Publicly viewable carousel items for promotional display.
+     * @path /carouselItems/{carouselItemId}
+     * @allow get, list: if true; (Public)
+     * @deny create, update, delete: if !isAdmin(); (Admin only content management)
+     * @principle Public Read with Admin-Only Writes.
+     */
+    match /carouselItems/{carouselItemId} {
+      allow get, list: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    /**
+     * @description General inquiries submitted via contact forms. Public can create, only Admins can read/manage.
+     * @path /inquiries/{inquiryId}
+     * @allow create: if true; (Anyone can submit an inquiry)
+     * @deny get, list, update, delete: if !isAdmin(); (Restricted to internal staff)
+     * @principle Structural segregation of lead data from public content.
+     */
+    match /inquiries/{inquiryId} {
+      allow create: if true;
+      allow get, list, update, delete: if isAdmin();
+    }
+
+    /**
+     * @description Specific quotation requests nested under the user who created them.
+     * @path /users/{userId}/quotationRequests/{quotationRequestId}
+     * @allow get, list: if isOwner(userId) || isAdmin();
+     * @allow create: if isOwner(userId);
+     * @allow update: if isExistingOwner(userId) && (request.resource.data.id == resource.data.id);
+     * @allow delete: if isExistingOwner(userId);
+     * @principle Path-based ownership for high-performance user data protection.
+     */
+    match /users/{userId}/quotationRequests/{quotationRequestId} {
+      allow get, list: if isOwner(userId) || isAdmin();
+      
+      // Relational consistency: Ensure the document ID matches the request ID on create
+      allow create: if isOwner(userId) && request.resource.data.id == quotationRequestId;
+      
+      // Immuntability: Ensure the document ID cannot be changed once set
+      allow update: if isExistingOwner(userId) && request.resource.data.id == resource.data.id;
+      
+      allow delete: if isExistingOwner(userId);
+    }
+
+    /**
+     * @description Mapping collection for administrative privileges.
+     * @path /roles_admin/{adminUid}
+     * @allow get: if isSignedIn(); (Users can check their own or others' status)
+     * @deny list, create, update, delete: if false; (Managed via admin panel or console)
+     * @principle Global roles DBAC model for internal access control.
+     */
+    match /roles_admin/{adminUid} {
+      allow get: if isSignedIn();
+      allow list, create, update, delete: if false;
+    }
+  }
+}
