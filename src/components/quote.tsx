@@ -8,18 +8,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { useFirestore, useUser, useAuth } from '@/firebase';
-import { collection, doc } from 'firebase/firestore';
-import { setDocumentNonBlocking } from '@/firebase/non-blocking-updates';
-import { initiateAnonymousSignIn } from '@/firebase/non-blocking-login';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
+import { sendQuoteEmail } from '@/app/actions/email-actions';
 
 export function Quote() {
   const { toast } = useToast();
-  const db = useFirestore();
-  const auth = useAuth();
-  const { user } = useUser();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -34,25 +28,11 @@ export function Quote() {
       phone: formData.get('contact-number') as string,
       quantity: Number(formData.get('quantity')),
       details: formData.get('details') as string,
-      submittedAt: new Date().toISOString(),
-      status: 'Pending',
     };
 
-    // Ensure user is signed in anonymously at minimum
-    let currentUser = user;
-    if (!currentUser) {
-      initiateAnonymousSignIn(auth);
-      // We don't await auth here per non-blocking guidelines, 
-      // but the UI will handle the feedback.
-    }
+    const result = await sendQuoteEmail(data);
 
-    // Since we need the UID for the path, we handle the submission
-    if (user || currentUser) {
-      const userId = user?.uid || currentUser?.uid;
-      const quoteRef = doc(collection(db, 'users', userId!, 'quotationRequests'));
-      
-      setDocumentNonBlocking(quoteRef, { ...data, id: quoteRef.id }, { merge: true });
-
+    if (result.success) {
       toast({
         title: "Quote Request Sent!",
         description: "We've received your request and will get back to you soon.",
@@ -61,8 +41,8 @@ export function Quote() {
     } else {
       toast({
         variant: "destructive",
-        title: "Submission Pending",
-        description: "We are establishing a secure connection. Please try clicking submit again in a moment.",
+        title: "Error",
+        description: result.error || "Could not submit request. Please try again.",
       });
     }
 

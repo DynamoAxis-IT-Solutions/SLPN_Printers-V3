@@ -7,18 +7,15 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { useFirestore } from '@/firebase';
-import { collection, doc } from 'firebase/firestore';
-import { setDocumentNonBlocking } from '@/firebase/non-blocking-updates';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
+import { sendContactEmail } from '@/app/actions/email-actions';
 
 export function Contact() {
   const { toast } = useToast();
-  const db = useFirestore();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
@@ -28,18 +25,24 @@ export function Contact() {
       email: formData.get('email') as string,
       subject: formData.get('subject') as string,
       message: formData.get('message') as string,
-      submittedAt: new Date().toISOString(),
     };
 
-    const inquiryRef = doc(collection(db, 'inquiries'));
-    setDocumentNonBlocking(inquiryRef, { ...data, id: inquiryRef.id }, { merge: true });
+    const result = await sendContactEmail(data);
 
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. We'll get back to you shortly.",
-    });
+    if (result.success) {
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for reaching out. We'll get back to you shortly.",
+      });
+      (e.target as HTMLFormElement).reset();
+    } else {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: result.error || "Could not send message. Please try again.",
+      });
+    }
 
-    (e.target as HTMLFormElement).reset();
     setIsSubmitting(false);
   };
 
