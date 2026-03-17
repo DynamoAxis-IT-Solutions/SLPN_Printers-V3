@@ -56,7 +56,7 @@ export default function AboutPage() {
               </div>
               <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl bg-white flex items-center justify-center p-8 border">
                 <Image
-                  src="/logo.png"
+                  src="/logo2.webp"
                   alt="SLPN Printers Logo"
                   width={400}
                   height={200}
