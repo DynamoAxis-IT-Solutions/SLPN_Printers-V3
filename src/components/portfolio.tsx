@@ -1,4 +1,3 @@
-
 'use client';
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
@@ -33,7 +32,7 @@ export function Portfolio() {
                     src={item.url}
                     alt={item.alt}
                     fill
-                    className="object-contain p-4 transition-transform duration-500 group-hover:scale-110"
+                    className="object-contain p-1 transition-transform duration-500 group-hover:scale-110"
                     data-ai-hint={item.hint}
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
