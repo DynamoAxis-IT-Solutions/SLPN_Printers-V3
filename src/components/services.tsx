@@ -1,57 +1,51 @@
 
 'use client';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Paintbrush, IdCard, Megaphone, Package, Layers, BookOpen } from "lucide-react";
+import { IdCard, Megaphone, BookOpen, Package, Layers } from "lucide-react";
 import Link from "next/link";
 
 const services = [
   {
-    icon: <Paintbrush className="h-12 w-12 text-primary" />,
-    title: "Graphic Design",
-    description: "Creative designs that capture your brand's essence, from logos to full branding packages.",
-    href: "/services#business-corporate"
-  },
-  {
     icon: <IdCard className="h-12 w-12 text-primary" />,
-    title: "Business Cards",
-    description: "Premium quality business cards with various finishes to make a strong first impression.",
+    title: "Business & Corporate",
+    description: "Premium business cards, letterheads, and corporate profiles to elevate your brand identity.",
     href: "/services#business-corporate"
   },
   {
     icon: <Megaphone className="h-12 w-12 text-primary" />,
-    title: "Marketing Materials",
-    description: "High-impact flyers, brochures, and posters to effectively promote your business.",
-    href: "/services#marketing-promotional"
-  },
-  {
-    icon: <Package className="h-12 w-12 text-primary" />,
-    title: "Packaging",
-    description: "Custom packaging solutions that protect your products and delight your customers.",
-    href: "/services#packaging-printing"
-  },
-  {
-    icon: <Layers className="h-12 w-12 text-primary" />,
-    title: "Banners & Signs",
-    description: "Durable and vibrant large-format printing for indoor and outdoor use.",
+    title: "Marketing & Promotional",
+    description: "High-impact flyers, posters, and catalogs designed to capture attention and drive results.",
     href: "/services#marketing-promotional"
   },
   {
     icon: <BookOpen className="h-12 w-12 text-primary" />,
-    title: "Booklets & Catalogs",
-    description: "Professionally printed and bound booklets, catalogs, and magazines.",
+    title: "Publications & Stationery",
+    description: "Professionally printed books, magazines, and calendars with high-quality binding solutions.",
     href: "/services#publications-stationery"
+  },
+  {
+    icon: <Package className="h-12 w-12 text-primary" />,
+    title: "Packaging Printing",
+    description: "Custom box sleeves, cartons, and product labels that protect and showcase your products.",
+    href: "/services#packaging-printing"
+  },
+  {
+    icon: <Layers className="h-12 w-12 text-primary" />,
+    title: "Value-Added Finishes",
+    description: "Enhance your prints with spot UV, embossing, foil stamping, and specialized laminations.",
+    href: "/services#value-added-finishes"
   },
 ];
 
 export function Services() {
   return (
-    <section id="services" className="w-full py-12 md:py-24 lg:py-32">
+    <section id="services" className="w-full py-12 md:py-24">
       <div className="container px-4 md:px-6 mx-auto">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12 animate-fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
           <div className="space-y-2">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-foreground">Our Services</h2>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed mx-auto">
-              We offer a wide range of printing services to meet your needs.
+              Comprehensive printing solutions tailored to your professional and promotional needs.
             </p>
           </div>
         </div>
