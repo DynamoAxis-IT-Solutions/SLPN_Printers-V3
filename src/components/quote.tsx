@@ -1,23 +1,79 @@
+
 'use client';
+
+import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { useFirestore, useUser, useAuth } from '@/firebase';
+import { collection, doc } from 'firebase/firestore';
+import { setDocumentNonBlocking } from '@/firebase/non-blocking-updates';
+import { initiateAnonymousSignIn } from '@/firebase/non-blocking-login';
+import { useToast } from '@/hooks/use-toast';
+import { Loader2 } from 'lucide-react';
 
 export function Quote() {
-  const handleSubmit = (e: React.FormEvent) => {
+  const { toast } = useToast();
+  const db = useFirestore();
+  const auth = useAuth();
+  const { user } = useUser();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // In a real app, you would handle form submission here.
-    alert("Quote request submitted! We will get back to you shortly.");
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get('name') as string,
+      email: formData.get('email') as string,
+      serviceId: formData.get('service') as string,
+      phone: formData.get('contact-number') as string,
+      quantity: Number(formData.get('quantity')),
+      details: formData.get('details') as string,
+      submittedAt: new Date().toISOString(),
+      status: 'Pending',
+    };
+
+    // Ensure user is signed in anonymously at minimum
+    let currentUser = user;
+    if (!currentUser) {
+      initiateAnonymousSignIn(auth);
+      // We don't await auth here per non-blocking guidelines, 
+      // but the UI will handle the feedback.
+    }
+
+    // Since we need the UID for the path, we handle the submission
+    if (user || currentUser) {
+      const userId = user?.uid || currentUser?.uid;
+      const quoteRef = doc(collection(db, 'users', userId!, 'quotationRequests'));
+      
+      setDocumentNonBlocking(quoteRef, { ...data, id: quoteRef.id }, { merge: true });
+
+      toast({
+        title: "Quote Request Sent!",
+        description: "We've received your request and will get back to you soon.",
+      });
+      (e.target as HTMLFormElement).reset();
+    } else {
+      toast({
+        variant: "destructive",
+        title: "Submission Pending",
+        description: "We are establishing a secure connection. Please try clicking submit again in a moment.",
+      });
+    }
+
+    setIsSubmitting(false);
   };
 
   return (
-    <div id="quote" className="w-full scroll-mt-24">
+    <div id="quote" className="w-full scroll-mt-24 py-4">
       <div className="container px-4 md:px-6 mx-auto">
         <div className="flex flex-col items-center justify-center space-y-4">
-          <Card className="w-full max-w-3xl mx-auto animate-fade-in-up bg-white border shadow-sm" style={{ animationDelay: '0.6s', animationFillMode: 'both' }}>
+          <Card className="w-full max-w-3xl mx-auto bg-white border shadow-sm">
             <CardHeader className="text-center pt-8">
               <CardTitle className="text-3xl font-bold tracking-tighter sm:text-4xl text-foreground">Request a Quote</CardTitle>
               <CardDescription className="mt-2 text-muted-foreground md:text-lg">
@@ -29,17 +85,17 @@ export function Quote() {
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label htmlFor="name">Full Name</Label>
-                    <Input id="name" placeholder="John Doe" required />
+                    <Input id="name" name="name" placeholder="John Doe" required />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="email">Email</Label>
-                    <Input id="email" type="email" placeholder="john@example.com" required />
+                    <Input id="email" name="email" type="email" placeholder="john@example.com" required />
                   </div>
                 </div>
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label htmlFor="service">Service</Label>
-                    <Select required>
+                    <Select name="service" required>
                       <SelectTrigger id="service">
                         <SelectValue placeholder="Select a service" />
                       </SelectTrigger>
@@ -55,18 +111,25 @@ export function Quote() {
                   </div>
                    <div className="space-y-2">
                     <Label htmlFor="contact-number">Contact Number</Label>
-                    <Input id="contact-number" type="tel" placeholder="e.g., +1 234 567 890" required />
+                    <Input id="contact-number" name="contact-number" type="tel" placeholder="e.g., +1 234 567 890" required />
                   </div>
                 </div>
                  <div className="space-y-2">
                     <Label htmlFor="quantity">Quantity</Label>
-                    <Input id="quantity" type="number" placeholder="e.g., 500" required />
+                    <Input id="quantity" name="quantity" type="number" placeholder="e.g., 500" required />
                   </div>
                 <div className="space-y-2">
                   <Label htmlFor="details">Project Details</Label>
-                  <Textarea id="details" placeholder="Please provide details like size, paper type, colors, etc." className="min-h-[100px]" />
+                  <Textarea id="details" name="details" placeholder="Please provide details like size, paper type, colors, etc." className="min-h-[100px]" />
                 </div>
-                <Button type="submit" className="w-full sm:w-auto justify-self-center rounded-full px-8 h-12 text-lg">Submit Request</Button>
+                <Button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="w-full sm:w-auto justify-self-center rounded-full px-8 h-12 text-lg"
+                >
+                  {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
+                  Submit Request
+                </Button>
               </form>
             </CardContent>
           </Card>
