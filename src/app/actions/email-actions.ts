@@ -4,7 +4,7 @@ import { Resend } from 'resend';
 
 // Using the provided API key directly as requested
 const resend = new Resend('re_S7caVbhA_rCNAPmyai5Q71wJUsCKGnscP');
-const TARGET_EMAIL = 'ict21819@fot.sjp.ac.lk';
+const TARGET_EMAIL = 'slpn.pr@gmail.com';
 
 export async function sendContactEmail(data: {
   name: string;
