@@ -1,3 +1,4 @@
+
 'use client';
 
 import Image from 'next/image';
@@ -9,23 +10,12 @@ import {
   CarouselItem,
 } from '@/components/ui/carousel';
 import Autoplay from "embla-carousel-autoplay";
+import placeholders from "@/app/lib/placeholder-images.json";
 
 const carouselItems = [
-  {
-    image: "https://picsum.photos/seed/print1/1920/1080",
-    alt: "Assortment of printed materials",
-    hint: "printing offset"
-  },
-  {
-    image: "https://picsum.photos/seed/print2/1920/1080",
-    alt: "Close-up of a high-quality print",
-    hint: "color print"
-  },
-  {
-    image: "https://picsum.photos/seed/print3/1920/1080",
-    alt: "Printing press in action",
-    hint: "printing machine"
-  }
+  placeholders.hero1,
+  placeholders.hero2,
+  placeholders.hero3
 ];
 
 export function Hero() {
@@ -47,7 +37,7 @@ export function Hero() {
           {carouselItems.map((item, index) => (
            <CarouselItem key={index} className="relative h-screen pl-0">
              <Image
-               src={item.image}
+               src={item.url}
                alt={item.alt}
                fill
                className="object-cover"

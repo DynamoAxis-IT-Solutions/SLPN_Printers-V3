@@ -1,14 +1,16 @@
+
 'use client';
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
+import placeholders from "@/app/lib/placeholder-images.json";
 
 const portfolioItems = [
-  { src: "https://picsum.photos/600/400?random=4", alt: "Project 1", hint: "design print" },
-  { src: "https://picsum.photos/600/400?random=5", alt: "Project 2", hint: "business card" },
-  { src: "https://picsum.photos/600/400?random=6", alt: "Project 3", hint: "brochure" },
-  { src: "https://picsum.photos/600/400?random=7", alt: "Project 4", hint: "banner" },
-  { src: "https://picsum.photos/600/400?random=8", alt: "Project 5", hint: "packaging" },
-  { src: "https://picsum.photos/600/400?random=9", alt: "Project 6", hint: "catalog" },
+  placeholders.portfolio1,
+  placeholders.portfolio2,
+  placeholders.portfolio3,
+  placeholders.portfolio4,
+  placeholders.portfolio5,
+  placeholders.portfolio6,
 ];
 
 export function Portfolio() {
@@ -28,10 +30,10 @@ export function Portfolio() {
             <Card key={index} className="overflow-hidden group bg-transparent border rounded-lg">
               <CardContent className="p-0">
                 <Image
-                  src={item.src}
+                  src={item.url}
                   alt={item.alt}
-                  width={600}
-                  height={400}
+                  width={item.width}
+                  height={item.height}
                   className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
                   data-ai-hint={item.hint}
                 />

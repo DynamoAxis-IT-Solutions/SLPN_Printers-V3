@@ -1,6 +1,8 @@
+
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import Image from "next/image";
+import placeholders from "@/app/lib/placeholder-images.json";
 
 export default function AboutPage() {
   return (
@@ -28,29 +30,39 @@ export default function AboutPage() {
                   Our Story
                 </h2>
                 <p className="text-lg text-muted-foreground">
-                  SLPN Printers began with a simple mission: to provide high-quality, professional printing services that help businesses stand out. Over the years, we have grown from a small local shop into a full-service printing partner for companies across the region.
+                SLPN Printers is a trusted leader in printing
+and packaging, serving both local and
+international markets. With a strong focus
+on premium quality and exceptional
+customer service, we deliver the best
+value for your investment. Our highly
+trained and experienced team ensures
+every project is handled with precision,
+efficiency, and on-time delivery - helping
+your brand stand out with unmatched
+print excellence.
                 </p>
                 <p className="text-lg text-muted-foreground">
                   We specialize in offset and digital printing, packaging solutions, and large-format signage. Our team of experienced designers and technicians work tirelessly to ensure that every project meets our rigorous standards for color accuracy and finish.
                 </p>
                 <div className="grid grid-cols-2 gap-6 pt-4">
                   <div>
-                    <h4 className="text-2xl font-bold text-primary">15+</h4>
+                    <h4 className="text-2xl font-bold text-primary">13+</h4>
                     <p className="text-sm text-muted-foreground uppercase tracking-wider font-semibold">Years Experience</p>
                   </div>
                   <div>
-                    <h4 className="text-2xl font-bold text-primary">5000+</h4>
+                    <h4 className="text-2xl font-bold text-primary">1000+</h4>
                     <p className="text-sm text-muted-foreground uppercase tracking-wider font-semibold">Projects Completed</p>
                   </div>
                 </div>
               </div>
               <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="https://picsum.photos/seed/printshop/800/600"
-                  alt="SLPN Printers Facility"
+                  src={placeholders.facility.url}
+                  alt={placeholders.facility.alt}
                   fill
                   className="object-cover"
-                  data-ai-hint="printing facility"
+                  data-ai-hint={placeholders.facility.hint}
                 />
               </div>
             </div>
