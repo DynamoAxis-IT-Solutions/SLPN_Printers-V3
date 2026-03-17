@@ -14,18 +14,18 @@ export function Quote() {
   };
 
   return (
-    <section id="quote" className="w-full py-12 md:py-24 lg:py-32">
-      <div className="container px-4 md:px-6">
+    <div id="quote" className="w-full scroll-mt-24">
+      <div className="container px-4 md:px-6 mx-auto">
         <div className="flex flex-col items-center justify-center space-y-4">
-          <Card className="w-full max-w-3xl mx-auto animate-fade-in-up bg-transparent border-none shadow-none" style={{ animationDelay: '0.6s', animationFillMode: 'both' }}>
-            <CardHeader className="text-center">
+          <Card className="w-full max-w-3xl mx-auto animate-fade-in-up bg-white border shadow-sm" style={{ animationDelay: '0.6s', animationFillMode: 'both' }}>
+            <CardHeader className="text-center pt-8">
               <CardTitle className="text-3xl font-bold tracking-tighter sm:text-4xl text-foreground">Request a Quote</CardTitle>
               <CardDescription className="mt-2 text-muted-foreground md:text-lg">
                 Fill out the form below and we'll get back to you with a personalized quote.
               </CardDescription>
             </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="grid gap-6">
+            <CardContent className="pb-8">
+              <form onSubmit={handleSubmit} className="grid gap-6 text-left">
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label htmlFor="name">Full Name</Label>
@@ -64,14 +64,14 @@ export function Quote() {
                   </div>
                 <div className="space-y-2">
                   <Label htmlFor="details">Project Details</Label>
-                  <Textarea id="details" placeholder="Please provide details like size, paper type, colors, etc." className="min-h-[120px]" />
+                  <Textarea id="details" placeholder="Please provide details like size, paper type, colors, etc." className="min-h-[100px]" />
                 </div>
-                <Button type="submit" className="w-full sm:w-auto justify-self-center">Submit Request</Button>
+                <Button type="submit" className="w-full sm:w-auto justify-self-center rounded-full px-8 h-12 text-lg">Submit Request</Button>
               </form>
             </CardContent>
           </Card>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

@@ -33,14 +33,14 @@ export default function Home() {
         <Clients />
 
         {/* Quote */}
-        <section className="w-full py-20 bg-gray-50">
+        <section className="w-full py-12 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 text-center">
             <Quote />
           </div>
         </section>
 
         {/* Contact */}
-        <section className="w-full py-20 bg-white">
+        <section className="w-full py-12 bg-white">
           <div className="max-w-7xl mx-auto px-4 text-center">
             <Contact />
           </div>
