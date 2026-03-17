@@ -7,69 +7,62 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from '@/components/ui/carousel';
 import Autoplay from "embla-carousel-autoplay";
 
 const carouselItems = [
   {
-    image: "/slider/img-1.webp",
+    image: "https://picsum.photos/seed/print1/1920/1080",
     alt: "Assortment of printed materials",
+    hint: "printing offset"
   },
   {
-    image: "/slider/img-2.webp",
+    image: "https://picsum.photos/seed/print2/1920/1080",
     alt: "Close-up of a high-quality print",
+    hint: "color print"
   },
   {
-    image: "/slider/img-20.webp",
+    image: "https://picsum.photos/seed/print3/1920/1080",
     alt: "Printing press in action",
-  },
-  {
-    image: "/slider/img-21.webp",
-    alt: "Colorful print design",
-  },
-  {
-    image: "/slider/img-22.webp",
-    alt: "Finished print products",
-  },
+    hint: "printing machine"
+  }
 ];
 
 export function Hero() {
   return (
-    <section className="relative w-full h-[calc(100vh-120px)] min-h-[500px] md:min-h-[600px] text-white">
+    <section className="relative w-full h-screen min-h-[600px] overflow-hidden">
       <Carousel
         className="w-full h-full"
         plugins={[
           Autoplay({
             delay: 5000,
-            stopOnInteraction: true,
+            stopOnInteraction: false,
           }),
         ]}
         opts={{
           loop: true,
         }}
       >
-        <CarouselContent className="h-full">
+        <CarouselContent className="h-screen ml-0">
           {carouselItems.map((item, index) => (
-           <CarouselItem key={index} className="h-full">
-           <div className="relative w-full h-full min-h-[900px]">
+           <CarouselItem key={index} className="relative h-screen pl-0">
              <Image
                src={item.image}
                alt={item.alt}
                fill
                className="object-cover"
                priority={index === 0}
+               data-ai-hint={item.hint}
              />
-             <div className="absolute inset-0 bg-black/70" />
-           </div>
-         </CarouselItem>         
+             <div className="absolute inset-0 bg-black/50" />
+           </CarouselItem>         
           ))}
         </CarouselContent>
-        <div className="absolute inset-0 flex items-center justify-center">
+        
+        <div className="absolute inset-0 flex items-center justify-center pt-24">
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-start max-w-2xl text-left space-y-6">
-                    <h1 className="animate-fade-in-up text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
+                    <h1 className="animate-fade-in-up text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl text-white" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
                         Let's be Bold with <br /> Print for <span className="text-primary">SLPN Printers</span>
                     </h1>
                     <p className="animate-fade-in-up max-w-xl text-lg md:text-xl text-white/90" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
@@ -80,7 +73,7 @@ export function Hero() {
                             <Link href="#quote">Make Quotation</Link>
                         </Button>
                         <Button asChild size="lg" variant="outline" className="rounded-full border-2 border-white bg-transparent px-8 py-6 text-lg text-white hover:bg-white hover:text-black">
-                            <Link href="#about">Know More</Link>
+                            <Link href="/about">Know More</Link>
                         </Button>
                     </div>
                 </div>

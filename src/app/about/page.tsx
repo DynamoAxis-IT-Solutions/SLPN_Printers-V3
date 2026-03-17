@@ -1,4 +1,3 @@
-
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import Image from "next/image";
@@ -7,7 +6,7 @@ export default function AboutPage() {
   return (
     <div className="flex flex-col min-h-screen bg-white">
       <Header />
-      <main className="flex-1">
+      <main className="flex-1 pt-24">
         {/* Page Header */}
         <section className="relative w-full py-24 bg-gray-50 border-b">
           <div className="container mx-auto px-4 text-center">

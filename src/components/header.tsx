@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -27,16 +26,16 @@ export function Header() {
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 50;
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
-      }
+      setScrolled(isScrolled);
     };
 
-    document.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    // Initial check
+    handleScroll();
     return () => {
-      document.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
-  }, [scrolled]);
+  }, []);
 
   // Determine if header should be transparent
   // Only transparent on homepage when not scrolled
@@ -45,7 +44,7 @@ export function Header() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-50 w-full transition-all duration-300',
+        'fixed top-0 z-50 w-full transition-all duration-300',
         isTransparent ? 'bg-transparent' : 'bg-white shadow-md'
       )}
     >
