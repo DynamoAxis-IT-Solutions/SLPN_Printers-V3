@@ -1,7 +1,7 @@
 
 'use client';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { IdCard, Megaphone, BookOpen, Package, Layers } from "lucide-react";
+import { IdCard, Megaphone, Files, Package, Layers,BookOpen } from "lucide-react";
 import Link from "next/link";
 
 const services = [
@@ -18,7 +18,7 @@ const services = [
     href: "/services#marketing-promotional"
   },
   {
-    icon: <BookOpen className="h-12 w-12 text-primary" />,
+    icon: <Files className="h-12 w-12 text-primary" />,
     title: "Publications & Stationery",
     description: "Professionally printed books, magazines, and calendars with high-quality binding solutions.",
     href: "/services#publications-stationery"
@@ -33,6 +33,12 @@ const services = [
     icon: <Layers className="h-12 w-12 text-primary" />,
     title: "Value-Added Finishes",
     description: "Enhance your prints with spot UV, embossing, foil stamping, and specialized laminations.",
+    href: "/services#value-added-finishes"
+  },
+  {
+    icon: <BookOpen className="h-12 w-12 text-primary" />,
+    title: "Booklets & Catalogs",
+    description: "Professionally printed and bound booklets, catalogs and magazines",
     href: "/services#value-added-finishes"
   },
 ];
