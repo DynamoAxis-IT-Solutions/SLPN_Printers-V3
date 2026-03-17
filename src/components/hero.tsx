@@ -56,7 +56,7 @@ export function Hero() {
                         Let's be Bold with <br /> Print for <span className="text-primary">SLPN Printers</span>
                     </h1>
                     <p className="animate-fade-in-up max-w-xl text-lg md:text-xl text-white/90" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
-                        High-quality offset printing solutions tailored to elevate your business. From flyers and brochures to packaging and large-format prints — we deliver precision, consistency, and vibrant results.
+                        High quality offset printing solutions tailored to elevate your business. From flyers and brochures to packaging and large format prints we deliver precision, consistency, and vibrant results.
                     </p>
                     <div className="animate-fade-in-up flex flex-col sm:flex-row gap-4" style={{ animationDelay: '0.6s', animationFillMode: 'both' }}>
                         <Button asChild size="lg" className="rounded-full bg-primary px-8 py-6 text-lg text-primary-foreground hover:bg-primary/90">

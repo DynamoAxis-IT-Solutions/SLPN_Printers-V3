@@ -33,5 +33,10 @@
   "portfolio3": { "url": "https://picsum.photos/seed/p3/600/400", "width": 600, "height": 400, "alt": "Brochure Design", "hint": "brochure" },
   "portfolio4": { "url": "https://picsum.photos/seed/p4/600/400", "width": 600, "height": 400, "alt": "Banner Print", "hint": "banner" },
   "portfolio5": { "url": "https://picsum.photos/seed/p5/600/400", "width": 600, "height": 400, "alt": "Packaging Solution", "hint": "packaging" },
-  "portfolio6": { "url": "https://picsum.photos/seed/p6/600/400", "width": 600, "height": 400, "alt": "Catalog Print", "hint": "catalog" }
+  "portfolio6": { "url": "https://picsum.photos/seed/p6/600/400", "width": 600, "height": 400, "alt": "Catalog Print", "hint": "catalog" },
+  "serviceBusiness": { "url": "https://picsum.photos/seed/s-biz/800/600", "width": 800, "height": 600, "alt": "Business Printing", "hint": "business cards" },
+  "serviceMarketing": { "url": "https://picsum.photos/seed/s-mkt/800/600", "width": 800, "height": 600, "alt": "Marketing Materials", "hint": "marketing flyers" },
+  "servicePub": { "url": "https://picsum.photos/seed/s-pub/800/600", "width": 800, "height": 600, "alt": "Publications", "hint": "magazines books" },
+  "servicePkg": { "url": "https://picsum.photos/seed/s-pkg/800/600", "width": 800, "height": 600, "alt": "Packaging Printing", "hint": "packaging box" },
+  "serviceFinish": { "url": "https://picsum.photos/seed/s-fin/800/600", "width": 800, "height": 600, "alt": "Value Added Finishes", "hint": "print finish" }
 }
