@@ -1,7 +1,6 @@
-
 import { Twitter, Facebook, Instagram } from "lucide-react";
-import { Logo } from "./logo";
 import Link from "next/link";
+import Image from "next/image";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -11,7 +10,15 @@ export function Footer() {
         <div className="grid gap-8 md:grid-cols-3">
           {/* Left: Logo + tagline */}
           <div className="space-y-4">
-            <Logo />
+            <Link href="/" className="block">
+              <Image 
+                src="/logo2.webp" 
+                alt="SLPN Printers" 
+                width={200} 
+                height={80} 
+                className="w-48 h-auto object-contain"
+              />
+            </Link>
             <p className="text-muted-foreground">
               Your one-stop shop for all printing needs. Precision and quality in every project.
             </p>

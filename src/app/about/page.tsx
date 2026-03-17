@@ -15,7 +15,7 @@ export default function AboutPage() {
               About SLPN Printers
             </h1>
             <p className="mt-4 max-w-2xl mx-auto text-muted-foreground md:text-xl">
-              Precision, Quality, and Innovation in every print since 2010.
+              Precision, Quality, and Innovation in every print since 2013.
             </p>
           </div>
         </section>
@@ -57,7 +57,7 @@ export default function AboutPage() {
               </div>
               <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl bg-white p-8 border">
                 <Image
-                  src="/logo.png"
+                  src="/logo2.jpg"
                   alt="SLPN Printers Logo"
                   fill
                   className="object-contain p-12"
@@ -73,14 +73,19 @@ export default function AboutPage() {
             <div className="grid gap-8 md:grid-cols-2">
               <div className="p-8 bg-white rounded-xl shadow-sm border">
                 <h3 className="text-2xl font-bold mb-4 text-foreground">Our Mission</h3>
-                <p className="text-muted-foreground">
-                  To deliver exceptional printing solutions that exceed customer expectations through innovation, sustainable practices, and unwavering attention to detail.
+                <p className="text-muted-foreground text-justify">
+                Our mission is to empower individuals and
+                businesses to realize their greatest potential
+                via the power of print by upholding a strong
+                commitment to quality.
                 </p>
               </div>
               <div className="p-8 bg-white rounded-xl shadow-sm border">
                 <h3 className="text-2xl font-bold mb-4 text-foreground">Our Vision</h3>
-                <p className="text-muted-foreground">
-                  To be the leading provider of creative and industrial printing services, recognized for our quality craftsmanship and commitment to client success.
+                <p className="text-muted-foreground text-justify">
+                To succeed in the way in printing technology
+                development, promoting creative thinking and
+                effortless integration throughout every print.
                 </p>
               </div>
             </div>
